@@ -1,0 +1,8 @@
+services:
+    boxydev_badge.badge_manager:
+        class: Boxydev\BadgeBundle\Manager\BadgeManager
+        arguments: ['@doctrine.orm.entity_manager', '@event_dispatcher']
+
+    boxydev_badge.entity_manager:
+        class: Boxydev\BadgeBundle\Manager\EntityManager
+        arguments: ['%boxydev_badge.badge%', '%boxydev_badge.rank%']

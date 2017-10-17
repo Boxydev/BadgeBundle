@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Editer le badge {{ badge.name }}</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <a class="btn btn-default" href="{{ path('boxydev_badge_list') }}">Retour à la liste des badges</a>
+        <button class="btn btn-primary">Modifier le badge</button>
+    {{ form_end(form) }}
+
+{% endblock %}

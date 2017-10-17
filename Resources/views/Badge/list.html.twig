@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Liste des badges</h1>
+
+    <a class="btn btn-primary" href="{{ path('boxydev_badge_create') }}">
+        <span class="fa fa-plus"></span>
+        Ajouter un nouveau badge
+    </a>
+
+    <table class="table table-responsive table-striped">
+        <thead>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Groupe</th>
+            <th>Objectif</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+        {% for badge in badges %}
+            <tr>
+                <td>{{ badge.id }}</td>
+                <td>
+                    <a href="{{ path('boxydev_badge_show', { id: badge.id }) }}">{{ badge.name }}</a>
+                </td>
+                <td>{{ badge.badgeGroup }}</td>
+                <td>{{ badge.count }}</td>
+                <td>
+                    <a class="btn btn-success" href="{{ path('boxydev_badge_edit', {'id': badge.id}) }}"><span class="fa fa-pencil"></span></a>
+                    <a class="btn btn-danger" onclick="return confirm('Supprimer le badge ?');" href="{{ path('boxydev_badge_delete', {'id': badge.id}) }}"><span class="fa fa-trash"></span></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
