@@ -6,3 +6,10 @@ services:
     boxydev_badge.entity_manager:
         class: Boxydev\BadgeBundle\Manager\EntityManager
         arguments: ['%boxydev_badge.badge%', '%boxydev_badge.rank%']
+
+    boxydev_badge.converter:
+        class: Boxydev\BadgeBundle\Request\ParamConverter\BadgeConverter
+        tags:
+            - { name: request.param_converter, priority: -1, converter: converter }
+        arguments:
+            ['@doctrine.orm.entity_manager', '@boxydev_badge.entity_manager']
