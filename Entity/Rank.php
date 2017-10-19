@@ -12,6 +12,7 @@
 namespace Boxydev\BadgeBundle\Entity;
 
 use Boxydev\BadgeBundle\Model\BadgeInterface;
+use Boxydev\BadgeBundle\Model\ParticipantInterface;
 use Boxydev\BadgeBundle\Model\RankInterface;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -35,16 +36,16 @@ class Rank implements RankInterface
     private $id;
 
     /**
-     * @var Badge
+     * @var BadgeInterface
      *
-     * @ORM\ManyToOne(targetEntity="Boxydev\BadgeBundle\Entity\Badge", inversedBy="ranks")
+     * @ORM\ManyToOne(targetEntity="Boxydev\BadgeBundle\Model\BadgeInterface", inversedBy="ranks")
      */
     private $badge;
 
     /**
-     * @var \AppBundle\Entity\User
+     * @var ParticipantInterface
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="Boxydev\BadgeBundle\Model\ParticipantInterface")
      */
     private $participant;
 
@@ -62,7 +63,7 @@ class Rank implements RankInterface
      * Set badge
      *
      * @param BadgeInterface $badge
-     * @return Rank
+     * @return RankInterface
      */
     public function setBadge(BadgeInterface $badge = null)
     {
@@ -84,11 +85,11 @@ class Rank implements RankInterface
     /**
      * Set participant
      *
-     * @param \AppBundle\Entity\User $participant
+     * @param ParticipantInterface $participant
      *
-     * @return Rank
+     * @return RankInterface
      */
-    public function setParticipant(\AppBundle\Entity\User $participant = null)
+    public function setParticipant(ParticipantInterface $participant = null)
     {
         $this->participant = $participant;
 
@@ -98,7 +99,7 @@ class Rank implements RankInterface
     /**
      * Get participant
      *
-     * @return \AppBundle\Entity\User
+     * @return ParticipantInterface
      */
     public function getParticipant()
     {

@@ -51,7 +51,7 @@ class Badge implements BadgeInterface
     /**
      * @var array
      *
-     * @ORM\OneToMany(targetEntity="Boxydev\BadgeBundle\Entity\Rank", mappedBy="badge", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="Boxydev\BadgeBundle\Model\RankInterface", mappedBy="badge", orphanRemoval=true)
      */
     private $ranks;
 
@@ -85,7 +85,7 @@ class Badge implements BadgeInterface
      *
      * @param string $name
      *
-     * @return Badge
+     * @return BadgeInterface
      */
     public function setName($name)
     {
@@ -109,7 +109,7 @@ class Badge implements BadgeInterface
      *
      * @param string $badgeGroup
      *
-     * @return Badge
+     * @return BadgeInterface
      */
     public function setBadgeGroup($badgeGroup)
     {
@@ -133,7 +133,7 @@ class Badge implements BadgeInterface
      *
      * @param integer $count
      *
-     * @return Badge
+     * @return BadgeInterface
      */
     public function setCount($count)
     {
@@ -156,7 +156,7 @@ class Badge implements BadgeInterface
      * Add rank
      *
      * @param RankInterface $rank
-     * @return Badge
+     * @return BadgeInterface
      */
     public function addRank(RankInterface $rank)
     {

@@ -11,8 +11,8 @@
 
 namespace Boxydev\BadgeBundle\Request\ParamConverter;
 
-use Boxydev\BadgeBundle\Model\BadgeInterface;
 use Boxydev\BadgeBundle\Manager\EntityManager as BadgeEntityManager;
+use Boxydev\BadgeBundle\Model\BadgeInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\ParamConverterInterface;

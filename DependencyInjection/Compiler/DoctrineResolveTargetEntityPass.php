@@ -11,6 +11,7 @@
 
 namespace Boxydev\BadgeBundle\DependencyInjection\Compiler;
 
+use Doctrine\ORM\Version;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -26,21 +27,23 @@ class DoctrineResolveTargetEntityPass implements CompilerPassInterface
         $definition = $container->findDefinition('doctrine.orm.listeners.resolve_target_entity');
 
         $definition->addMethodCall('addResolveTargetEntity', array(
-            'Boxydev\BadgeBundle\Entity\Rank',
-            $container->getParameter('boxydev_badge.rank_class'),
-            array()
+            'Boxydev\BadgeBundle\Model\RankInterface', $container->getParameter('boxydev_badge.rank_class'), array()
         ));
 
         $definition->addMethodCall('addResolveTargetEntity', array(
-            'Boxydev\BadgeBundle\Entity\Badge',
-            $container->getParameter('boxydev_badge.badge_class'),
-            array()
+            'Boxydev\BadgeBundle\Model\BadgeInterface', $container->getParameter('boxydev_badge.badge_class'), array()
         ));
 
         $definition->addMethodCall('addResolveTargetEntity', array(
-            'Boxydev\BadgeBundle\Entity\Participant',
-            'AppBundle\Entity\User',
-            array()
+            'Boxydev\BadgeBundle\Model\ParticipantInterface', 'AppBundle\Entity\User', array()
         ));
+
+        // BC: ResolveTargetEntityListener implements the subscriber interface since
+        // v2.5.0-beta1 (Commit 437f812)
+        if (version_compare(Version::VERSION, '2.5.0-DEV') < 0) {
+            $definition->addTag('doctrine.event_listener', array('event' => 'loadClassMetadata'));
+        } else {
+            $definition->addTag('doctrine.event_subscriber');
+        }
     }
 }

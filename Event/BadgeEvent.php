@@ -22,7 +22,7 @@ class BadgeEvent extends Event
     const NAME = 'badge.ranking';
 
     /**
-     * @var Rank
+     * @var RankInterface
      */
     private $rank;
 
