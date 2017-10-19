@@ -27,8 +27,12 @@
                 <td>{{ badge.badgeGroup }}</td>
                 <td>{{ badge.count }}</td>
                 <td>
-                    <a class="btn btn-success" href="{{ path('boxydev_badge_edit', {'id': badge.id}) }}"><span class="fa fa-pencil"></span></a>
-                    <a class="btn btn-danger" onclick="return confirm('Supprimer le badge ?');" href="{{ path('boxydev_badge_delete', {'id': badge.id}) }}"><span class="fa fa-trash"></span></a>
+                    <a class="btn btn-success" href="{{ path('boxydev_badge_edit', {'id': badge.id}) }}">
+                        <span class="fa fa-pencil"> Modifier</span>
+                    </a>
+                    <a class="btn btn-danger" onclick="return confirm('Supprimer le badge ?');" href="{{ path('boxydev_badge_delete', {'id': badge.id}) }}">
+                        <span class="fa fa-trash"> Supprimer</span>
+                    </a>
                 </td>
             </tr>
         {% endfor %}

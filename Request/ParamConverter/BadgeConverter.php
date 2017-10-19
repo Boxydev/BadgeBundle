@@ -49,6 +49,10 @@ class BadgeConverter implements ParamConverterInterface
     {
         $id = $request->attributes->get('id');
 
+        if (null === $id) {
+            throw new \InvalidArgumentException('Route attribute is missing');
+        }
+
         $repository = $this->manager->getRepository($this->badgeEntityManager->getBadgeClass());
         $badge = $repository->find($id);
 
@@ -68,7 +72,7 @@ class BadgeConverter implements ParamConverterInterface
      */
     public function supports(ParamConverter $configuration)
     {
-        if ($configuration->getClass() !== BadgeInterface::class) {
+        if (BadgeInterface::class !== $configuration->getClass()) {
             return false;
         }
 
