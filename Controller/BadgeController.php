@@ -11,10 +11,10 @@
 
 namespace Boxydev\BadgeBundle\Controller;
 
-use Boxydev\BadgeBundle\Entity\BadgeInterface;
+use Boxydev\BadgeBundle\Model\BadgeInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
 /**

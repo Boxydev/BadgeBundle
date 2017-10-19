@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * This file is part of the BoxydevBadgeBundle package.
  *
  * (c) Matthieu Mota <matthieu@boxydev.com>
@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Boxydev\BadgeBundle\Entity;
+namespace Boxydev\BadgeBundle\Model;
 
 /**
  * Interface RankInterface

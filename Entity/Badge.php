@@ -11,6 +11,8 @@
 
 namespace Boxydev\BadgeBundle\Entity;
 
+use Boxydev\BadgeBundle\Model\BadgeInterface;
+use Boxydev\BadgeBundle\Model\RankInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -153,11 +155,10 @@ class Badge implements BadgeInterface
     /**
      * Add rank
      *
-     * @param Rank $rank
-     *
+     * @param RankInterface $rank
      * @return Badge
      */
-    public function addRank(Rank $rank)
+    public function addRank(RankInterface $rank)
     {
         $this->ranks[] = $rank;
 
@@ -167,9 +168,9 @@ class Badge implements BadgeInterface
     /**
      * Remove rank
      *
-     * @param Rank $rank
+     * @param RankInterface $rank
      */
-    public function removeRank(Rank $rank)
+    public function removeRank(RankInterface $rank)
     {
         $this->ranks->removeElement($rank);
     }

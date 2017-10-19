@@ -13,7 +13,6 @@ namespace Boxydev\BadgeBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Class BadgeType
@@ -32,16 +31,6 @@ class BadgeType extends AbstractType
             ->add('badgeGroup')
             ->add('count')
         ;
-    }
-    
-    /**
-     * {@inheritdoc}
-     */
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => 'Boxydev\BadgeBundle\Entity\Badge'
-        ));
     }
 
     /**

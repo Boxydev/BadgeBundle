@@ -11,6 +11,8 @@
 
 namespace Boxydev\BadgeBundle\Entity;
 
+use Boxydev\BadgeBundle\Model\BadgeInterface;
+use Boxydev\BadgeBundle\Model\RankInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -59,11 +61,10 @@ class Rank implements RankInterface
     /**
      * Set badge
      *
-     * @param \Boxydev\BadgeBundle\Entity\Badge $badge
-     *
+     * @param BadgeInterface $badge
      * @return Rank
      */
-    public function setBadge(\Boxydev\BadgeBundle\Entity\Badge $badge = null)
+    public function setBadge(BadgeInterface $badge = null)
     {
         $this->badge = $badge;
 
@@ -73,7 +74,7 @@ class Rank implements RankInterface
     /**
      * Get badge
      *
-     * @return \Boxydev\BadgeBundle\Entity\Badge
+     * @return BadgeInterface
      */
     public function getBadge()
     {

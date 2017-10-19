@@ -11,7 +11,7 @@
 
 namespace Boxydev\BadgeBundle\Event;
 
-use Boxydev\BadgeBundle\Entity\Rank;
+use Boxydev\BadgeBundle\Model\RankInterface;
 use Symfony\Component\EventDispatcher\Event;
 
 /**
@@ -26,7 +26,7 @@ class BadgeEvent extends Event
      */
     private $rank;
 
-    public function __construct(Rank $rank)
+    public function __construct(RankInterface $rank)
     {
         $this->rank = $rank;
     }
