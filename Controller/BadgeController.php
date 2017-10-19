@@ -12,7 +12,6 @@
 namespace Boxydev\BadgeBundle\Controller;
 
 use Boxydev\BadgeBundle\Entity\BadgeInterface;
-use Boxydev\BadgeBundle\Form\BadgeType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -59,7 +58,7 @@ class BadgeController extends Controller
         $em = $this->getDoctrine()->getManager();
         $badge = $this->getBadgeInstance();
 
-        $form = $this->createForm(BadgeType::class, $badge);
+        $form = $this->createForm($this->getBadgeTypeFormClass(), $badge);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -102,7 +101,7 @@ class BadgeController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $form = $this->createForm(BadgeType::class, $badge);
+        $form = $this->createForm($this->getBadgeTypeFormClass(), $badge);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

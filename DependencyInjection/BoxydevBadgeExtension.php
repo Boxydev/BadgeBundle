@@ -36,7 +36,8 @@ class BoxydevBadgeExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
-        $container->setParameter('boxydev_badge.badge', $config['badge']);
-        $container->setParameter('boxydev_badge.rank', $config['rank']);
+        $container->setParameter('boxydev_badge.badge_class', $config['badge']['class']);
+        $container->setParameter('boxydev_badge.badge_form', $config['badge']['form']);
+        $container->setParameter('boxydev_badge.rank_class', $config['rank']['class']);
     }
 }

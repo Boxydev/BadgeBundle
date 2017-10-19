@@ -11,7 +11,7 @@
 
 namespace Boxydev\BadgeBundle\Manager;
 
-use Boxydev\BadgeBundle\Entity\Rank;
+use Boxydev\BadgeBundle\Manager\EntityManager as BoxydevEntityManager;
 use Boxydev\BadgeBundle\Event\BadgeEvent;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -33,20 +33,26 @@ class BadgeManager
      */
     private $dispatcher;
 
-    public function __construct(ObjectManager $em, EventDispatcherInterface $dispatcher)
+    /**
+     * @var BoxydevEntityManager
+     */
+    private $bem;
+
+    public function __construct(ObjectManager $em, EventDispatcherInterface $dispatcher, BoxydevEntityManager $bem)
     {
         $this->em = $em;
         $this->dispatcher = $dispatcher;
+        $this->bem = $bem;
     }
 
     public function checkAndUnlock($participant, $badge_group, $count)
     {
         $badge = $this->em
-            ->getRepository('BoxydevBadgeBundle:Badge')
+            ->getRepository($this->bem->getBadgeClass())
             ->findWithRank($participant, $badge_group, $count);
 
         if ($badge && $badge->getRanks()->isEmpty()) {
-            $rank = new Rank();
+            $rank = $this->bem->getRankInstance();
             $rank->setBadge($badge)
                  ->setParticipant($participant);
             $this->em->persist($rank);
@@ -57,7 +63,7 @@ class BadgeManager
 
     public function getBadges($participant)
     {
-        return $this->em->getRepository('BoxydevBadgeBundle:Badge')
+        return $this->em->getRepository($this->bem->getBadgeClass())
             ->findBadges($participant);
     }
 }

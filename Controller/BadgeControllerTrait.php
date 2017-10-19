@@ -27,4 +27,9 @@ trait BadgeControllerTrait
     {
         return $this->container->get('boxydev_badge.entity_manager')->getBadgeInstance();
     }
+
+    protected function getBadgeTypeFormClass()
+    {
+        return $this->container->get('boxydev_badge.form_factory')->getBadgeTypeFormClass();
+    }
 }

@@ -1,11 +1,15 @@
 services:
-    boxydev_badge.badge_manager:
-        class: Boxydev\BadgeBundle\Manager\BadgeManager
-        arguments: ['@doctrine.orm.entity_manager', '@event_dispatcher']
-
     boxydev_badge.entity_manager:
         class: Boxydev\BadgeBundle\Manager\EntityManager
-        arguments: ['%boxydev_badge.badge%', '%boxydev_badge.rank%']
+        arguments: ['%boxydev_badge.badge_class%', '%boxydev_badge.rank_class%']
+
+    boxydev_badge.badge_manager:
+        class: Boxydev\BadgeBundle\Manager\BadgeManager
+        arguments: ['@doctrine.orm.entity_manager', '@event_dispatcher', '@boxydev_badge.entity_manager']
+
+    boxydev_badge.form_factory:
+        class: Boxydev\BadgeBundle\Form\FormFactory
+        arguments: ['%boxydev_badge.badge_form%']
 
     boxydev_badge.converter:
         class: Boxydev\BadgeBundle\Request\ParamConverter\BadgeConverter
