@@ -40,7 +40,7 @@ class Configuration implements ConfigurationInterface
                             ->defaultValue('Boxydev\BadgeBundle\Entity\Badge')
                         ->end()
                         ->scalarNode('form')
-                            ->defaultValue('Boxydev\BadgeBundle\Form\BadgeType')
+                            ->defaultValue('Boxydev\BadgeBundle\Form\Type\BadgeType')
                         ->end()
                     ->end()
                 ->end()

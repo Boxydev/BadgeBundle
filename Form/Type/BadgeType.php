@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Boxydev\BadgeBundle\Form;
+namespace Boxydev\BadgeBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
