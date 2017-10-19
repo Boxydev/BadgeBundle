@@ -11,6 +11,11 @@
 
 namespace Boxydev\BadgeBundle\Model;
 
+/**
+ * Interface ParticipantInterface
+ * @package Boxydev\BadgeBundle\Model
+ * @author Matthieu Mota <matthieu@boxydev.com>
+ */
 interface ParticipantInterface
 {
 
